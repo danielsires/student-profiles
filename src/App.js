@@ -45,8 +45,12 @@ function App() {
       {studentData
         .filter(
           (studentObj) =>
-            studentObj.firstName.toLowerCase().includes(search) ||
-            studentObj.lastName.toLowerCase().includes(search)
+            studentObj.firstName
+              .toLowerCase()
+              .includes(search.toLocaleLowerCase()) ||
+            studentObj.lastName
+              .toLowerCase()
+              .includes(search.toLocaleLowerCase())
         )
         .map((studentObj) => {
           return (
