@@ -1,10 +1,15 @@
 import { useState } from 'react'
-import Tests from '../components/Tests'
+// import Tests from '../components/Tests'
 function Card({ company, email, firstName, lastName, pic, skill, avg, tests }) {
   const [showTests, setShowTests] = useState(false)
 
   const toggleTests = () => {
     showTests ? setShowTests(false) : setShowTests(true)
+  }
+  const Tests = () => {
+    tests.forEach((test) => {
+      return <li>{test}</li>
+    })
   }
   return (
     <div className='card-container'>
@@ -19,7 +24,17 @@ function Card({ company, email, firstName, lastName, pic, skill, avg, tests }) {
         <p>Skill: {skill}</p>
         <p>Average: {avg}%</p>
 
-        <ul>{showTests ? <Tests test={tests} /> : null}</ul>
+        <ul>
+          {showTests
+            ? tests.map((test, idx) => {
+                return (
+                  <li>
+                    Test {idx + 1}: {test}
+                  </li>
+                )
+              })
+            : null}
+        </ul>
       </div>
     </div>
   )
