@@ -33,6 +33,10 @@
   color: #61dafb;
 }
 
+button {
+  float: right;
+}
+
 
 
 @keyframes App-logo-spin {
@@ -44,11 +48,12 @@
   }
 }
 .card-container {
-
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   border-bottom: 1px solid black;
   padding: 15px;
+  /* width: 100%; */
+  justify-content: space-evenly;
 }
 .full-name {
   font-size: 40px;

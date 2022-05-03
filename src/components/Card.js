@@ -6,11 +6,7 @@ function Card({ company, email, firstName, lastName, pic, skill, avg, tests }) {
   const toggleTests = () => {
     showTests ? setShowTests(false) : setShowTests(true)
   }
-  const Tests = () => {
-    tests.forEach((test) => {
-      return <li>{test}</li>
-    })
-  }
+
   return (
     <div className='card-container'>
       <div>
@@ -18,7 +14,9 @@ function Card({ company, email, firstName, lastName, pic, skill, avg, tests }) {
       </div>
       <div className='student-info'>
         <h1 className='full-name'>{`${firstName} ${lastName}`}</h1>
-        <button onClick={toggleTests}>+</button>
+        <button onClick={toggleTests}>
+          <i class='fa-solid fa-plus'></i>
+        </button>
         <p>Email: {email}</p>
         <p>Company: {company}</p>
         <p>Skill: {skill}</p>
@@ -28,7 +26,7 @@ function Card({ company, email, firstName, lastName, pic, skill, avg, tests }) {
           {showTests
             ? tests.map((test, idx) => {
                 return (
-                  <li>
+                  <li key={idx}>
                     Test {idx + 1}: {test}
                   </li>
                 )
