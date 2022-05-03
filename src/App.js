@@ -4,7 +4,9 @@ import './App.css'
 
 function App() {
   const [studentData, setStudentData] = useState([])
+
   const [search, setNewSearch] = useState('')
+  const [showTests, setShowTests] = useState(false)
 
   const calcAvg = (arr) => {
     let sum = 0
@@ -12,6 +14,11 @@ function App() {
       sum += Number(arr[i])
     }
     return sum / arr.length
+  }
+
+  const toggleTests = () => {
+    console.log('toggled')
+    showTests ? setShowTests(false) : setShowTests(true)
   }
 
   const handleSearch = (e) => {
@@ -53,6 +60,9 @@ function App() {
               .includes(search.toLocaleLowerCase())
         )
         .map((studentObj) => {
+          const tests = studentObj.grades
+          console.log(tests)
+
           return (
             <Card
               firstName={studentObj.firstName}
@@ -61,9 +71,10 @@ function App() {
               email={studentObj.email}
               company={studentObj.company}
               skill={studentObj.skill}
-              grades={calcAvg(studentObj.grades)}
+              avg={calcAvg(studentObj.grades)}
               key={studentObj.id}
-            />
+              tests={tests}
+            ></Card>
           )
         })}
     </>
