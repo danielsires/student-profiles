@@ -16,11 +16,9 @@ function Card({ company, email, firstName, lastName, pic, skill, avg, tests }) {
     console.log(tag, tags)
     addItem(tag)
     setTags([...tags])
-    clearInput()
-  }
-  const clearInput = () => {
     setTag('')
   }
+
   const handleInputChange = (event) => {
     event.preventDefault()
     setTag(event.target.value)

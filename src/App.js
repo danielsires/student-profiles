@@ -6,6 +6,7 @@ function App() {
   const [studentData, setStudentData] = useState([])
 
   const [search, setNewSearch] = useState('')
+  const [tagSearch, setTagSearch] = useState('')
   // const [showTests, setShowTests] = useState(false)
 
   const calcAvg = (arr) => {
@@ -43,6 +44,12 @@ function App() {
 
   return (
     <>
+      <input
+        type='text'
+        placeholder='Search by tag'
+        onChange={handleSearch}
+        value={tagSearch}
+      />
       <input
         type='text'
         placeholder='Search by name'
