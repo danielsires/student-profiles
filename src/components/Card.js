@@ -53,7 +53,7 @@ function Card({ company, email, firstName, lastName, pic, skill, avg, tests }) {
           {tags ? (
             tags.map((t, idx) => (
               <li key={idx}>
-                <a className='tag' href=''>
+                <a className='tag' href='#'>
                   {t}
                 </a>
               </li>
