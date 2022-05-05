@@ -6,7 +6,7 @@ function App() {
   const [studentData, setStudentData] = useState([])
 
   const [search, setNewSearch] = useState('')
-  const [showTests, setShowTests] = useState(false)
+  // const [showTests, setShowTests] = useState(false)
 
   const calcAvg = (arr) => {
     let sum = 0
@@ -16,10 +16,10 @@ function App() {
     return sum / arr.length
   }
 
-  const toggleTests = () => {
-    console.log('toggled')
-    showTests ? setShowTests(false) : setShowTests(true)
-  }
+  // const toggleTests = () => {
+  //   console.log('toggled')
+  //   showTests ? setShowTests(false) : setShowTests(true)
+  // }
 
   const handleSearch = (e) => {
     setNewSearch(e.target.value)
