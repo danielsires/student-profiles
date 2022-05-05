@@ -1,6 +1,4 @@
 import { useState } from 'react'
-// import Tests from '../components/Tests'
-// import TagList from './TagList'
 function Card({ company, email, firstName, lastName, pic, skill, avg, tests }) {
   const [showTests, setShowTests] = useState(false)
   const [tags, setTags] = useState([])
@@ -18,8 +16,11 @@ function Card({ company, email, firstName, lastName, pic, skill, avg, tests }) {
     console.log(tag, tags)
     addItem(tag)
     setTags([...tags])
+    clearInput()
   }
-
+  const clearInput = () => {
+    setTag('')
+  }
   const handleInputChange = (event) => {
     event.preventDefault()
     setTag(event.target.value)
@@ -39,7 +40,7 @@ function Card({ company, email, firstName, lastName, pic, skill, avg, tests }) {
         <p>Company: {company}</p>
         <p>Skill: {skill}</p>
         <p>Average: {avg}%</p>
-        <ul id='tags'>
+        <ul id='tests'>
           {showTests
             ? tests.map((test, idx) => {
                 return (
@@ -50,9 +51,15 @@ function Card({ company, email, firstName, lastName, pic, skill, avg, tests }) {
               })
             : null}
         </ul>
-        <ul>
+        <ul id='tags'>
           {tags ? (
-            tags.map((t, idx) => <li key={idx}>{t}</li>)
+            tags.map((t, idx) => (
+              <li key={idx}>
+                <a className='tag' href=''>
+                  {t}
+                </a>
+              </li>
+            ))
           ) : (
             <li>No Tags</li>
           )}

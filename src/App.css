@@ -78,8 +78,22 @@ input {
 
 }
 
+form {
+  margin: 15px;
+}
+
 #tests {
   padding: 10px;
   
+}
+#tags {
+  display: flex;
+
+
+}
+.tag {
+  padding: 5px;
+  border: 1px solid black;
+  text-decoration: none;
 }
 
