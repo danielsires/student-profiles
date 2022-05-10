@@ -1,5 +1,16 @@
 import { useState } from 'react'
-function Card({ company, email, firstName, lastName, pic, skill, avg, tests }) {
+import Tags from './Tags'
+function Card({
+  company,
+  email,
+  firstName,
+  lastName,
+  pic,
+  skill,
+  avg,
+  tests,
+  cardTags,
+}) {
   const [showTests, setShowTests] = useState(false)
   const [tags, setTags] = useState([])
   const [tag, setTag] = useState('')
@@ -49,19 +60,18 @@ function Card({ company, email, firstName, lastName, pic, skill, avg, tests }) {
               })
             : null}
         </ul>
-        <ul id='tags'>
-          {tags ? (
-            tags.map((t, idx) => (
-              <li key={idx}>
-                <a className='tag' href='#'>
-                  {t}
-                </a>
-              </li>
-            ))
-          ) : (
-            <li>No Tags</li>
-          )}
-        </ul>
+        <div id='tags'>
+          {tags ? <Tags tags={tags} /> : null}
+          {/* {tags
+            ? tags.map((t, idx) => {
+                return (
+                  <button className='tag' key={idx}>
+                    {t}
+                  </button>
+                )
+              })
+            : null} */}
+        </div>
 
         <form onSubmit={handleSubmit}>
           <input

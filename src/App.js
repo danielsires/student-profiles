@@ -7,7 +7,6 @@ function App() {
 
   const [search, setNewSearch] = useState('')
   const [tagSearch, setTagSearch] = useState('')
-  // const [showTests, setShowTests] = useState(false)
 
   const calcAvg = (arr) => {
     let sum = 0
@@ -17,13 +16,12 @@ function App() {
     return sum / arr.length
   }
 
-  // const toggleTests = () => {
-  //   console.log('toggled')
-  //   showTests ? setShowTests(false) : setShowTests(true)
-  // }
-
   const handleSearch = (e) => {
     setNewSearch(e.target.value)
+  }
+
+  const handeTagSearch = (e) => {
+    setTagSearch(e.target.value)
   }
 
   const fetchData = async () => {
@@ -47,7 +45,7 @@ function App() {
       <input
         type='text'
         placeholder='Search by tag'
-        onChange={handleSearch}
+        onChange={handeTagSearch}
         value={tagSearch}
       />
       <input
@@ -56,6 +54,7 @@ function App() {
         onChange={handleSearch}
         value={search}
       />
+
       {studentData
         .filter(
           (studentObj) =>
@@ -81,7 +80,7 @@ function App() {
               avg={calcAvg(studentObj.grades)}
               key={studentObj.id}
               tests={tests}
-            ></Card>
+            />
           )
         })}
     </>
