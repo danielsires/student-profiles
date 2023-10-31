@@ -1,56 +1,57 @@
-import { useState, useEffect } from 'react'
-import Card from './components/Card'
-import './App.css'
+import { useState, useEffect } from 'react';
+import Card from './components/Card';
+import './App.css';
 
 function App() {
-  const [studentData, setStudentData] = useState([])
+  const [studentData, setStudentData] = useState([]);
 
-  const [search, setNewSearch] = useState('')
-  const [tagSearch, setTagSearch] = useState('')
+  const [search, setNewSearch] = useState('');
+  // const [tagSearch, setTagSearch] = useState('');
 
   const calcAvg = (arr) => {
-    let sum = 0
+    let sum = 0;
     for (let i = 0; i < arr.length; i++) {
-      sum += Number(arr[i])
+      sum += Number(arr[i]);
     }
-    return sum / arr.length
-  }
+    return sum / arr.length;
+  };
 
   const handleSearch = (e) => {
-    setNewSearch(e.target.value)
-  }
+    setNewSearch(e.target.value);
+  };
 
-  const handeTagSearch = (e) => {
-    setTagSearch(e.target.value)
-  }
+  // const handleTagSearch = (e) => {
+  //   setTagSearch(e.target.value);
+  // };
 
   const fetchData = async () => {
     try {
       const response = await fetch(
         'https://api.hatchways.io/assessment/students'
-      )
-      const data = await response.json()
-      setStudentData(data.students)
+      );
+      const data = await response.json();
+      console.log(data);
+      setStudentData(data.students);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   return (
     <>
-      <input
-        type='text'
-        placeholder='Search by tag'
-        onChange={handeTagSearch}
+      {/* <input
+        type="text"
+        placeholder="Search by tag"
+        onChange={handleTagSearch}
         value={tagSearch}
-      />
+      /> */}
       <input
-        type='text'
-        placeholder='Search by name'
+        type="text"
+        placeholder="Search by name"
         onChange={handleSearch}
         value={search}
       />
@@ -66,8 +67,8 @@ function App() {
               .includes(search.toLocaleLowerCase())
         )
         .map((studentObj) => {
-          const tests = studentObj.grades
-          console.log(tests)
+          const tests = studentObj.grades;
+          console.log(tests);
 
           return (
             <Card
@@ -80,11 +81,12 @@ function App() {
               avg={calcAvg(studentObj.grades)}
               key={studentObj.id}
               tests={tests}
+              // cardTags={tagSearch}
             />
-          )
+          );
         })}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
